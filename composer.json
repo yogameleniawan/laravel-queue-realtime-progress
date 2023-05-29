@@ -1,0 +1,16 @@
+{
+    "name": "yogameleniawan/job-batching-with-realtime-progress",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "YogaMeleniawan\\JobBatchingWithRealtimeProgress\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yoga Meleniawan Pamungkas"
+        }
+    ],
+    "require": {}
+}
