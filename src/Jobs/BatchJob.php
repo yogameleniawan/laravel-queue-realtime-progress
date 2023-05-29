@@ -10,12 +10,15 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use YogaMeleniawan\JobBatchingWithRealtimeProgress\Events\StatusJobEvent;
+use YogaMeleniawan\JobBatchingWithRealtimeProgress\Interfaces\RealtimeJobBatchInterface;
 
 class BatchJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, Batchable;
 
     public $timeout = 10000000;
+    private RealtimeJobBatchInterface $repository;
+
     /**
      * Create a new job instance.
      *
@@ -23,7 +26,8 @@ class BatchJob implements ShouldQueue
      */
     public function __construct(
         private string $channel_name,
-        private string $broadcast_name
+        private string $broadcast_name,
+        private $value
     )
     {
         //
@@ -37,7 +41,9 @@ class BatchJob implements ShouldQueue
     public function handle()
     {
         // execute single job
+        $this->repository->save();
 
+        // broacast to channel and event
         event(new StatusJobEvent(
             finished: $this->batch()->finished(),
             progress: $this->batch()->progress(),
