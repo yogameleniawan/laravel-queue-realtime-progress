@@ -24,8 +24,6 @@ class BatchJob implements ShouldQueue
      * @return void
      */
     public function __construct(
-        private string $channel_name,
-        private string $broadcast_name,
         private $data,
         private RealtimeJobBatchInterface $repository
     )
@@ -49,8 +47,7 @@ class BatchJob implements ShouldQueue
             progress: $this->batch()->progress(),
             pending: $this->batch()->processedJobs(),
             total: $this->batch()->totalJobs,
-            channel_name: $this->channel_name,
-            broadcast_name: $this->broadcast_name
+            data: $this->data
         ));
     }
 }

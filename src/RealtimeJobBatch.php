@@ -17,12 +17,10 @@ class RealtimeJobBatch {
         //
     }
 
-    public function execute(string $name, ?array $option, string $channel_name, string $broadcast_name): object {
+    public function execute(string $name, ?array $option): object {
         $batch = Bus::batch(
             new MasterJob(
                 option: $option,
-                channel_name: $channel_name,
-                broadcast_name: $broadcast_name,
                 repository: $this->realtimeJob
             )
         )

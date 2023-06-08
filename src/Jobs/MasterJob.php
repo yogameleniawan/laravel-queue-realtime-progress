@@ -24,8 +24,6 @@ class MasterJob implements ShouldQueue
      */
     public function __construct(
         private $option,
-        private $channel_name,
-        private $broadcast_name,
         public RealtimeJobBatchInterface $repository
     )
     {
@@ -48,8 +46,6 @@ class MasterJob implements ShouldQueue
 
         foreach($data as $key => $value) {
             $batch->add(new BatchJob(
-                channel_name: $this->channel_name,
-                broadcast_name: $this->broadcast_name,
                 data: $value,
                 repository: $this->repository
                 ),

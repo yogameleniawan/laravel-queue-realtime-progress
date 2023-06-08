@@ -26,8 +26,7 @@ class StatusJobEvent implements ShouldBroadcastNow
         public $progress,
         public $pending,
         public $total,
-        public $channel_name,
-        public $broadcast_name
+        public $data
     )
     {
       //
@@ -40,11 +39,11 @@ class StatusJobEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel($this->channel_name);
+        return new Channel('channel-job-batching');
     }
 
     public function broadcastAs()
     {
-        return $this->broadcast_name;
+        return 'broadcast-job-batching';
     }
 }
