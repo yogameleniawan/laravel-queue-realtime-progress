@@ -1,5 +1,6 @@
 {
-    "name": "yogameleniawan/job-batching-with-realtime-progress",
+    "name": "yogameleniawan/realtime-job-batching",
+    "description": "Job Batching with Realtime Progress using Pusher for Laravel",
     "type": "library",
     "license": "MIT",
     "autoload": {
