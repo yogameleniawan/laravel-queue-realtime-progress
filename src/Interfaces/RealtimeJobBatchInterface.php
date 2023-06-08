@@ -2,7 +2,9 @@
 
 namespace YogaMeleniawan\JobBatchingWithRealtimeProgress\Interfaces;
 
+use Illuminate\Support\Collection;
+
 interface RealtimeJobBatchInterface {
-    public function get_all(): object;
-    public function save(): void;
+    public function get_all(): Collection;
+    public function save($data): void;
 }

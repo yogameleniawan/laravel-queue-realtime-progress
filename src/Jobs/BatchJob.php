@@ -17,7 +17,6 @@ class BatchJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, Batchable;
 
     public $timeout = 10000000;
-    private RealtimeJobBatchInterface $repository;
 
     /**
      * Create a new job instance.
@@ -27,7 +26,8 @@ class BatchJob implements ShouldQueue
     public function __construct(
         private string $channel_name,
         private string $broadcast_name,
-        private $value
+        private $data,
+        private RealtimeJobBatchInterface $repository
     )
     {
         //
@@ -41,7 +41,7 @@ class BatchJob implements ShouldQueue
     public function handle()
     {
         // execute single job
-        $this->repository->save();
+        $this->repository->save(data: $this->data);
 
         // broacast to channel and event
         event(new StatusJobEvent(
