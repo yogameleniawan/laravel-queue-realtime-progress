@@ -38,10 +38,10 @@ class BatchJob implements ShouldQueue
      */
     public function handle()
     {
-        // execute single job
+        // this is where the magic happen. the data will be processed by your own business logic.
         $this->repository->save(data: $this->data);
 
-        // broacast to channel and event
+        // after the data is processed, we can send the event to the client with pusher broadcast.
         event(new StatusJobEvent(
             finished: $this->batch()->finished(),
             progress: $this->batch()->progress(),

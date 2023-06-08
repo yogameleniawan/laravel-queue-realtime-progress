@@ -36,13 +36,16 @@ class MasterJob implements ShouldQueue
      */
     public function handle()
     {
+        // we need to create a batch job first. this job will be handle one process at a time.
         $batch = Bus::batch([])
             ->name($this->batch()->id)
             ->onQueue('default')
             ->dispatch();
 
+        // get all data from database. the data should be in collection.
         $data = $this->repository->get_all();
 
+        // we need to add the batch job to the batch process.
         foreach($data as $key => $value) {
             $batch->add(new BatchJob(
                 data: $value,
