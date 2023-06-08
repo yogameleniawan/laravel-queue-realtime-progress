@@ -23,7 +23,6 @@ class MasterJob implements ShouldQueue
      * @return void
      */
     public function __construct(
-        private $option,
         public RealtimeJobBatchInterface $repository
     )
     {
