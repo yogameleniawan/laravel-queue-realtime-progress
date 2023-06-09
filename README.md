@@ -1,10 +1,16 @@
 # Laravel Job Batching with Realtime Progress
 
+![rect234](https://github.com/yogameleniawan/job-batching-with-realtime-progress/assets/64576201/d4af630c-4ed0-49ec-b9fe-4cd157115056)
+
+
 ## List of Contents
 - [List of Content](#list-of-contents)
 - [Requirement](#requirement)
 - [Configuration](#configuration)
 - [Implementation](#implementation)
+- [Changelog](#changelog)
+- [Credits](#credits)
+- [License](#license)
 
 ## Requirement
 - [PHP 7.4 or Higher](https://www.php.net/)
@@ -120,4 +126,16 @@ RealtimeJobBatch::setRepository(new VerificationRepository())
 },
 ```
 
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+## Credits
+
+- [Yoga Meleniawan Pamungkas](https://github.com/yogameleniawan)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
