@@ -6,7 +6,7 @@
 
 ## Preview Realtime Job Batching
 
-![0609-_1_](https://github.com/yogameleniawan/job-batching-with-realtime-progress/assets/64576201/fd4202ac-46b1-410b-a2f4-daf7e635f5e4)
+![Untitled](https://github.com/yogameleniawan/job-batching-with-realtime-progress/assets/64576201/039aacca-dcab-4fc2-a5e9-b99e1e0202ab)
 
 ## List of Contents
 - [List of Content](#list-of-contents)
