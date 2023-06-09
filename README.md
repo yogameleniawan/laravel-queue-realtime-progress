@@ -108,7 +108,7 @@ RealtimeJobBatch::setRepository(new VerificationRepository())
 ```html
     <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
     <script>
-        var pusher = new Pusher('b5ef13fb08817fecb0f7', {
+        var pusher = new Pusher('YOUR_PUSHER_APP_KEY', {
         cluster: 'mt1'
         });
 
