@@ -8,19 +8,32 @@ use YogaMeleniawan\JobBatchingWithRealtimeProgress\Interfaces\RealtimeJobBatchIn
 use YogaMeleniawan\JobBatchingWithRealtimeProgress\Jobs\MasterJob;
 
 class RealtimeJobBatch {
-    public static RealtimeJobBatchInterface $realtimeJob;
+    protected static RealtimeJobBatchInterface $repository;
 
-    public function __construct(
-        private RealtimeJobBatchInterface $interface,
-    )
-    {
-        self::$realtimeJob = $this->interface;
+    /**
+     * Set the repository implementation.
+     *
+     * @return object
+     */
+    public static function setRepository(
+        RealtimeJobBatchInterface $repository
+    ): object {
+        static::$repository = $repository;
+
+        return new static($repository);
     }
 
+    /**
+     * Execute the job batch.
+     * $name parameter will be used as the name of the job batch.
+     *
+     * @param string $name
+     * @return object
+     */
     public static function execute(string $name): object {
         $batch = Bus::batch(
             new MasterJob(
-                repository: self::$realtimeJob
+                repository: static::$repository
             )
         )
         ->name("Master Job of {$name}") // it will show in your job batch name as master job
