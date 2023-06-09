@@ -3,6 +3,11 @@
 ![rect234](https://github.com/yogameleniawan/job-batching-with-realtime-progress/assets/64576201/d4af630c-4ed0-49ec-b9fe-4cd157115056)
 
 
+
+## Preview Realtime Job Batching
+
+![0609-_1_](https://github.com/yogameleniawan/job-batching-with-realtime-progress/assets/64576201/fd4202ac-46b1-410b-a2f4-daf7e635f5e4)
+
 ## List of Contents
 - [List of Content](#list-of-contents)
 - [Requirement](#requirement)
