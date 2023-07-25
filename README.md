@@ -1,6 +1,7 @@
 # Laravel Job Batching with Realtime Progress
 
-![rect234](https://github.com/yogameleniawan/job-batching-with-realtime-progress/assets/64576201/d4af630c-4ed0-49ec-b9fe-4cd157115056)
+![banner](https://github.com/yogameleniawan/laravel-queue-realtime-progress/assets/64576201/42cf05bb-559d-4f62-950d-c1c66ebb4a8a)
+
 
 
 
