@@ -2,6 +2,7 @@
 
 namespace YogaMeleniawan\JobBatchingWithRealtimeProgress\Jobs;
 
+use Illuminate\Bus\Batch;
 use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -10,6 +11,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Bus;
+use YogaMeleniawan\JobBatchingWithRealtimeProgress\Events\StatusJobEvent;
 use YogaMeleniawan\JobBatchingWithRealtimeProgress\Interfaces\RealtimeJobBatchInterface;
 
 class MasterJob implements ShouldQueue
@@ -24,8 +26,7 @@ class MasterJob implements ShouldQueue
      */
     public function __construct(
         public RealtimeJobBatchInterface $repository
-    )
-    {
+    ) {
         //
     }
 
@@ -39,6 +40,15 @@ class MasterJob implements ShouldQueue
         // we need to create a batch job first. this job will be handle one process at a time.
         $batch = Bus::batch([])
             ->name($this->batch()->id)
+            ->finally(function (Batch $batch) {
+                event(new StatusJobEvent(
+                    finished: true,
+                    progress: 0,
+                    pending: 0,
+                    total: 0,
+                    data: ''
+                ));
+            })
             ->onQueue('default')
             ->dispatch();
 
@@ -46,10 +56,11 @@ class MasterJob implements ShouldQueue
         $data = $this->repository->get_all();
 
         // we need to add the batch job to the batch process.
-        foreach($data as $key => $value) {
-            $batch->add(new BatchJob(
-                data: $value,
-                repository: $this->repository
+        foreach ($data as $key => $value) {
+            $batch->add(
+                new BatchJob(
+                    data: $value,
+                    repository: $this->repository
                 ),
             );
         }
