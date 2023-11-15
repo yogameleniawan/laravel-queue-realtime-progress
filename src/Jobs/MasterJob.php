@@ -41,13 +41,10 @@ class MasterJob implements ShouldQueue
         $batch = Bus::batch([])
             ->name($this->batch()->id)
             ->finally(function (Batch $batch) {
-                event(new StatusJobEvent(
-                    finished: true,
-                    progress: 0,
-                    pending: 0,
-                    total: 0,
-                    data: ''
-                ));
+                Bus::batch(new FinishedJob())
+                    ->onQueue('default')
+                    ->name('finished_job')
+                    ->dispatch();
             })
             ->onQueue('default')
             ->dispatch();

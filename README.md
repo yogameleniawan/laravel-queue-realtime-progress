@@ -10,13 +10,21 @@
 ![Untitled](https://github.com/yogameleniawan/job-batching-with-realtime-progress/assets/64576201/039aacca-dcab-4fc2-a5e9-b99e1e0202ab)
 
 ## List of Contents
-- [List of Content](#list-of-contents)
-- [Requirement](#requirement)
-- [Configuration](#configuration)
-- [Implementation](#implementation)
-- [Changelog](#changelog)
-- [Credits](#credits)
-- [License](#license)
+- [Laravel Job Batching with Realtime Progress](#laravel-job-batching-with-realtime-progress)
+  - [Preview Realtime Job Batching](#preview-realtime-job-batching)
+  - [List of Contents](#list-of-contents)
+  - [Requirement](#requirement)
+  - [Configuration](#configuration)
+    - [Migration Table](#migration-table)
+    - [Install Package](#install-package)
+    - [Pusher Configuration](#pusher-configuration)
+  - [Implementation](#implementation)
+    - [Create Service Repository](#create-service-repository)
+    - [Create Controller Function](#create-controller-function)
+    - [Setup javascript](#setup-javascript)
+  - [Changelog](#changelog)
+  - [Credits](#credits)
+  - [License](#license)
 
 ## Requirement
 - [PHP 7.4 or Higher](https://www.php.net/)
@@ -116,6 +124,13 @@ RealtimeJobBatch::setRepository(new VerificationRepository())
         var channel = pusher.subscribe('channel-job-batching');
         channel.bind('broadcast-job-batching', function(data) {
             console.log(data)
+        });
+
+        var channel_finish = pusher.subscribe('channel-finished-job');
+        channel_finish.bind('request-finished-job', function(data) {
+            if (data.finished == true) {
+                // reset your progress bar
+            }
         });
     </script>
 ```
