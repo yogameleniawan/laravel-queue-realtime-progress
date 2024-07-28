@@ -22,11 +22,7 @@ class FinishedJobEvent implements ShouldBroadcastNow
      */
 
     public function __construct(
-        public $finished,
-        public $progress,
-        public $pending,
-        public $total,
-        public $data
+        public $finished
     ) {
         //
     }
