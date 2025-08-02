@@ -16,9 +16,9 @@
 
 Choose your preferred language for documentation:
 
-| Language | Documentation |
-| 🇺🇸 **English** | [View English Documentation](#-english-documentation) |
-| 🇮🇩 **Bahasa Indonesia** | [Lihat Dokumentasi Bahasa Indonesia](#-dokumentasi-bahasa-indonesia) |
+🇺🇸 **English** | [View English Documentation](#-english-documentation) |
+
+🇮🇩 **Bahasa Indonesia** | [Lihat Dokumentasi Bahasa Indonesia](#-dokumentasi-bahasa-indonesia) |
 
 ### Quick Navigation
 - [🚀 Getting Started](#️-installation) | [🚀 Memulai](#️-instalasi)
