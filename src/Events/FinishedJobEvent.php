@@ -22,7 +22,9 @@ class FinishedJobEvent implements ShouldBroadcastNow
      */
 
     public function __construct(
-        public $finished
+        public $finished,
+        public string $channelName = 'channel-job-finish',
+        public string $broadcastName = 'broadcast-job-finish'
     ) {
         //
     }
@@ -34,11 +36,11 @@ class FinishedJobEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('channel-job-finish');
+        return new Channel($this->channelName);
     }
 
     public function broadcastAs()
     {
-        return 'broadcast-job-finish';
+        return $this->broadcastName;
     }
 }
